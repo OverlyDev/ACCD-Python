@@ -25,6 +25,17 @@ def main():
     print(f"{percent}% of all the letters are e's")
 
 
+def new_count_things(text):
+    numLetters = 0
+    text = str(text)
+    numE = text.count(e)
+
+    for c in text:
+        if c.isalpha():
+            numLetters += 1
+    return numLetters, numE
+
+
 def count_things(text):
     """
     Uses string.ascii_letters because simple
