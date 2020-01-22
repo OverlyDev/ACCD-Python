@@ -29,14 +29,14 @@ def main():
         with open("/home/kek/PycharmProjects/ACCD-Python/Python II/classData/tmpprecip2012.dat", "r") as f:
             data = f.readlines()
 
-    for line in data:
-        month = int(line[0:2])
-        temp = int(line[13:16])
+    for line in data:  # Parse each line of the inputted file
+        month = int(line[0:2])  # Grab the month from the line of text
+        temp = int(line[13:16])  # Grab the temperature from the line of text
 
-        if temp > months[month-1][2]:
+        if temp > months[month-1][2]:  # Current temp > previous max temp
             months[month-1][2] = temp
 
-        if temp < months[month-1][3]:
+        if temp < months[month-1][3]:  # Current temp < previous min temp
             months[month-1][3] = temp
 
         months[month-1][1] += temp  # Adding up the temperatures for future averaging
