@@ -8,3 +8,16 @@ returns false, not the same list
 Safe (not an alias):
 y = list(x)
 y = x[:]
+
+########## 2D Lists ##########
+x[0][1]     [sublist][element]
+
+for i, j in list:     Unpack each sublist
+    print(i, j)
+
+x,y = y,x     Swaps variables without a third variable (unpacking)
+
+########## ETC ##########
+f"{x:.2f}"     two decimal places
+
+
