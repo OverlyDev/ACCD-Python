@@ -1,0 +1,10 @@
+########## ALIASES ##########
+x = [1,2]; y = list(x); y.append(3); print(x ==y); print(x is y); print(x,y)
+returns true, y is an alias of x (same memory object)
+
+x = [1,2]; y = list(x); y.append(3); print(x ==y); print(x is y); print(x,y)
+returns false, not the same list
+
+Safe (not an alias):
+y = list(x)
+y = x[:]
