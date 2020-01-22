@@ -21,7 +21,23 @@ from pprint import pprint     Neater printing of 2d lists
 
 using an initializer list to populate a 2d list ends up aliasing the init list x number of times
 
+########## TUPLES ##########
+x = [1,2,3]; y = [4,5,6]; z = list(zip(x, y))     zip creates a list of tuples. Ensure both things are same length!
+
+x = (1, -42, 138, 18); y = sorted(x)     sorts the tuple and returns a sorted list without modifying the original
+
+reversed does the same, but... rEvErSeD
+
+########## POSITIONAL ARGUMENTS ##########
+
+def fn(*varname) varname is usually args
+*varname receives all excess positional arguments and packs them into a tuple
+
+if isinstance(x, type) where type is int, float, str, etc.
+if isinstance(x, (type1, type2, ...) for multiple types     do not put type in quotes
+
 ########## ETC ##########
 f"{x:.2f}"     two decimal places
+x = [1,2,3]; y = [4,5,6]; z = list(zip(x, y))     zip creates a list of tuples. Ensure both things are same length!
 
 
