@@ -17,6 +17,10 @@ for i, j in list:     Unpack each sublist
 
 x,y = y,x     Swaps variables without a third variable (unpacking)
 
+from pprint import pprint     Neater printing of 2d lists
+
+using an initializer list to populate a 2d list ends up aliasing the init list x number of times
+
 ########## ETC ##########
 f"{x:.2f}"     two decimal places
 
