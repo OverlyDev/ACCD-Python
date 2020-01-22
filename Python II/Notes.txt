@@ -29,12 +29,35 @@ x = (1, -42, 138, 18); y = sorted(x)     sorts the tuple and returns a sorted li
 reversed does the same, but... rEvErSeD
 
 ########## POSITIONAL ARGUMENTS ##########
-
 def fn(*varname) varname is usually args
 *varname receives all excess positional arguments and packs them into a tuple
 
 if isinstance(x, type) where type is int, float, str, etc.
 if isinstance(x, (type1, type2, ...) for multiple types     do not put type in quotes
+
+x = [1,2,3,4]
+func_name(x)  # sends one item (a list) to the function
+func_name(*x)  # sends four integers to the function
+
+########## ARGV ##########
+from sys import argv
+print(type(argv), argv)     argv is of type list. First item is always the file name. All items are strings
+
+########## DICTIONARIES ##########
+keys can be any immutable type (number, strings, tuples)
+keys are hashed for quick lookup = much more efficient in some circumstances than list
+
+dict{}
+{'sun':1}
+dict(sun = 1)
+
+KeyError access exception if key does not exist
+len gives number of k:v pairs
+"in" works on keys only
+"for" loop iterates over keys only
+keys(), values(), items()
+for i,j in dict.items():
+    print(i,j)
 
 ########## ETC ##########
 f"{x:.2f}"     two decimal places

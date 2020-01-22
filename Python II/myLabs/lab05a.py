@@ -4,18 +4,6 @@
 # each parameter should be either int or float. reject all others. test with invalid data
 
 
-"""Temperature Conversion
-
-This program converts one temperature from fahrenheit to centigrade
-(in a void or fruitless function) and prints the results.
-Change it to handle a variable number of temperatures to covert and
-print in the function.
-"""
-
-import random
-from string import ascii_letters as abc
-
-
 def fahrenheit_to_centigrade(*args):
     print(f"Collecter argument: {args}\t type: {type(args)}")
     for xtmp in args:
