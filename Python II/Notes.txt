@@ -82,3 +82,25 @@ f"{x:.2f}"     two decimal places
 x = [1,2,3]; y = [4,5,6]; z = list(zip(x, y))     zip creates a list of tuples. Ensure both things are same length!
 
 
+########## BEFORE PYTHON III ##########
+review chapters 1-10 in python for everybody
+be sure to cover the vocabulary and exercises
+do the optional lab
+in the book think python, try doing exercise 8.5 on page 80. it is a simple encryption algorithm
+be sure to do take home lab
+understand all the labs from python 2
+work on formatting: make the data look reasonably good
+
+notes for lab:
+replace all punctuation with spaces except the apostrophe, replace it with a zero-length string
+
+
+Python III Class Structure:
+review
+python version 3 changes
+clarifying/expanding - translate, wih, sorting, copying
+comprehensions, lambda functions, generators, and recursion
+classes, inheritance, namespaces, scoping, importing
+system-oriented modules
+debugging tools
+using the 2to3 converter
