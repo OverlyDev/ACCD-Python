@@ -75,6 +75,8 @@ writing a collection = writelines()
 writing a string = write()
 
 
+
+
 ########## ETC ##########
 f"{x:.2f}"     two decimal places
 x = [1,2,3]; y = [4,5,6]; z = list(zip(x, y))     zip creates a list of tuples. Ensure both things are same length!
