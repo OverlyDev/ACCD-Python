@@ -1,0 +1,125 @@
+sequences = ordered and able to be sliced
+methods are attached to an object
+static methods do not use the object it is attached to. ex: dict.fromkeys(iterable[, int]) init defaults to None
+
+########## fromkeys dictionary method ##########
+creates a dictionary from the iterable passed in. second optional arg is for the initialization value (None by default)
+this dictionary uses ordinals
+    x = 'abcd'
+    y = ['wrd1', 'wrd2', 'wrd3', 'wrd4']
+    z1 = dict.fromkeys(y); z2 = dict.fromkeys(y, 0)
+    z1 = {}.fromkeys(y); z2 = {}.fromkeys(y, 0)
+    z3 = dict.fromkeys(x, -1)
+
+########## translate method ##########
+an easier way to do multiple conversions/deletions in a string
+one required arg: a dict containing each character to be replaced or deleted
+    can use maketrans static method to create this dictionary
+    maketrans produces the dictionary required by translate
+    two required args, one optional: (fromStr, toStr, delStr) processes deletes first
+        string of characters you with to modify
+        corresponding replacements characters. must be same lenth as first arg
+
+Ex: x = "Don't worry-be happy!"
+    temp = str.maketrans('y!', 'i?', "'")
+    y = x.translate(temp)
+    y = x.translate(str.maketrans('y!', 'i?', "'")
+    z = y.translate(str.maketrans(", ", '-?'))
+
+########## Sorting ##########
+sort and reverse methods operate only on lists
+sorted and reversed operate on any iterable. sorted gives a list, reversed gives an iterator
+    also, produce a result and leave original object intact
+sort:   key= (allows the passing of a function along with a method if desired)
+            ex: key = str.lower() - sorts as though all the text data is lower case
+                key = itemgetter(1) - sorts on item index 1 of given tuples in a list [(w, x), (y, z), ...]
+                itemgetter(1, 2) - number 2 is the tiebreaker
+        reverse= (default is False)
+
+########## Copying Mutables ##########
+x = [1,2,3,4], y = list(x) <<< safe, doesn't create an alias
+    this creates a shallow copy; only the first level is unique
+    deeper layers will be aliased
+from copy import deepcopy
+    list2 = deepcopy(list1)
+Anything deeper than 1 dimensional lists, use deepcopy
+
+########## List Comprehensions ##########
+[expression for item1 in iterable1 (if condition1)
+    for item2 in iterable2 (if condition1) ... ]
+ex: [x*2.5 for x in range(5)]
+ex: [x for x in range(10) if x % 2 == 0]
+convenient form of initializing a list with an arbitrary expression
+ex: y = [[[0 for a in range(5)] for b in range(3)] for c in range(3) >>> 3x3x5 matrix
+
+########## Dictionary and Set Comprehensions ##########
+y = {x**2 for x in range(5) >> a set
+y = {(x, x**2) for x in range(5)} >> a set of tuples
+z = {x: chr(x+65) for x in range(20)} >> a dictionary
+
+########## Functions ##########
+functions are objects just like everything else
+several flavors:
+    lambdas - unnamed one liners
+    generators - produce results as needed
+    recursive functions - call themselves
+lambdas - composed of an expression and can be assigned to variables. Typically not though
+    lambda <input variables(s)>: <expression to create a return>
+    ex: a1 = lambda x: x**2 >> a1(5) produces 25
+    ex: f = lambda x,y; x + y >> f(14, 12) produces 26
+    usually used wherever you can place an expression
+    often passed to other programs (like sort)
+
+########## Filter, Map, Reduce ##########
+can be done using Filter(), Map(), Reduce(), and Lambda
+ex: y = [2, 6, 9] # map and filter produce iterators in Python 3.x
+    x = map(lambda z: z**2, y); print(list(x)) >> produces [4, 36, 81]
+    x = filter(lambda
+    TODO: Grab the rest of the example
+x = [(0, -1, 3), (-1, 0, 4), (2, -6, -5), (1, 3, 2), (3, 2, 1)]
+how to sort on absolute value of the second element?
+    sorted(x, key=lambda y: abs(y[1])
+    sorted key=abs/str.lower/lambda y: abs(y[1)
+
+########## Yield ##########
+similar to return but suspends execution of the called function instead of ending the function
+on the next function call, yield picks up where it left off, with all identifier values intact
+this type of function is called a generator which is a type of iterator
+a standard return (explicit or implicit) stops the generator
+called with next()
+saves memory
+    try: generator function
+    except StopIteration:
+generators can be used in place of the range function to generate floats. This requires caution
+.1 is not easily expressed by computers
+.125 (8th) works great
+Python's Decimal class allows you to avoid floating point mis-precision (from decimal import Decimal)
+see generatordecimals.py
+
+########## Recursion ##########
+
+
+########## Classes ##########
+another way to modularize code
+class = user defined prototype
+instantiation = the creation of an instance of a class
+instance variable = variable defined inside a method and belongs only to the current instance of a class
+method = special kind of function that is defined in a class and accessed though dot notation
+refer to class.py in classData
+__init__ runs as soon as instance is created; initializes variables, etc
+
+########## Magic Methods ##########
+__init__ called when an instance is created
+__del__ called when an instance is deleted
+__str__ called when an instance is printed (for example)
+eq, ne, lt, gt, le, ge called during comparisons
+refer to magic methods file for a whole lot more
+
+########## Class Variables ##########
+variable shared by all instances of a class
+defined within a class but outside of any of the methods
+
+########## Inheritance ##########
+describes the transfer of the characteristics of a class to other classes that are derived from it
+ex: class A; methods; variables, etc
+    class B(A); do something different
