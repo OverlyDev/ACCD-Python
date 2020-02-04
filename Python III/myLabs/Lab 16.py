@@ -1,14 +1,11 @@
 """
-Change the previous program to allow, in addition to the normal account, an account with a minimum balance
-Do this through a new class that inherits from the original. Make sure it does the following:
-    1. Provides for an initial deposit, specified minimum balance, name on account creation.
-        for now, don't check to see that the initial deposit meets the minimum requirements
-    2. Does not permit a withdrawal that takes the balance below the minimum.
-        Return zero for valid withdrawals. Otherwise return 4.
-    3. When an instance is printed, print the balance and the minimum required for minimum-balance accounts.
-Confirm that the original methods work for the new class.
-Note – class variables are referenced through the original class
+Change the previous program to prevent a minimum balance account from being created without an initial deposit
+    that meets the required minimum
+Capture the error in the main program and print an appropriate message indicating the problem
+The message should contain a description of the problem, the attempted deposit amount, and the minimum requirement
 """
+
+# TODO: FIX EXCEPTIONS. WHAT DO.
 
 
 class BankAccount:  # Top tier class (super class) in Python 2 or 3
@@ -56,6 +53,10 @@ class MinBalanceAcct(BankAccount):
 
     def __init__(self, name, minimum, initial):   # This method runs during instantiation
         super().__init__(name)
+
+        if initial < minimum:
+            raise BankExceptions.min_balance_creation(initial, minimum)
+
         self.min_balance = minimum
         self.balance = initial
         MinBalanceAcct.min_acct_cntr += 1
@@ -76,6 +77,17 @@ class MinBalanceAcct(BankAccount):
         return 0
 
 
+class BankExceptions(Exception):
+    def __init__(self):
+        self.msg = ""
+
+    def min_balance_creation(self, deposit, min_req):
+        self.msg = ("Error creating account.",
+                    f"Required minimum balance: ${min_req}",
+                    f"Deposit amount: ${deposit}"
+                    )
+
+
 def main():
     a = BankAccount('Monty Python')  # Create an instance of Bankaccount
     b = BankAccount('Guido van Rossum')  # Create another instance
@@ -88,18 +100,10 @@ def main():
     if ret_code > 0:
         print('Deposit failed')  # Return > 0
 
-    z = MinBalanceAcct("Larry", 100, 100)
+    z = MinBalanceAcct("Larry", 100, 50)
     print(z.acctname)
     z.print_balance()
 
-    ret_code = z.withdrawal(50)
-    if ret_code > 0:
-        print("Withdrawal failed")
-    print(z)
-
-    x = MinBalanceAcct("Bob", 200, 100)
-    print(MinBalanceAcct.min_acct_cntr)
-    print(BankAccount.acct_cntr)
 
 
 if __name__ == '__main__':

@@ -2,6 +2,9 @@ sequences = ordered and able to be sliced
 methods are attached to an object
 static methods do not use the object it is attached to. ex: dict.fromkeys(iterable[, int]) init defaults to None
 
+*<variable> >>> unpacks a tuple and feeds it into a function
+    ex: print(*banana)
+
 ########## fromkeys dictionary method ##########
 creates a dictionary from the iterable passed in. second optional arg is for the initialization value (None by default)
 this dictionary uses ordinals
@@ -96,9 +99,6 @@ generators can be used in place of the range function to generate floats. This r
 Python's Decimal class allows you to avoid floating point mis-precision (from decimal import Decimal)
 see generatordecimals.py
 
-########## Recursion ##########
-
-
 ########## Classes ##########
 another way to modularize code
 class = user defined prototype
@@ -123,3 +123,56 @@ defined within a class but outside of any of the methods
 describes the transfer of the characteristics of a class to other classes that are derived from it
 ex: class A; methods; variables, etc
     class B(A); do something different
+
+########## Namespace and Scoping ##########
+scope = space where an identifier is visible
+    contained blocks can see identifiers of outer blocks
+The portion where execution begins is the main portion of your program. Internal name: __main__
+Everything defined in __main__ is global. They are known (visible) everywhere
+The objects imported from any module are known globally also. You need to be aware of potential conflicts.
+Namespace diagram gist: search begins within the function/class and works outward
+    builtin -> global -> enclosed -> local
+globals() keys for all the global things
+locals() keys for all the local things
+dir(x) shows all the methods attached to x
+namespace is a dictionary of variable names (keys) and their corresponding objects (values)
+
+########## System Modules ##########
+platform, getpass >> Look into these modules
+getpass.getuser() >> current user
+platform.system() >> OS version
+os.cpu_count() >> number of cores
+len(os.sched_getaffinity(0)) >> linux/mac show cores available to program
+sys.version_info >> version of python
+platform.uname() >> platform information (detailed OS and cpu)
+TODO: sys.exit() vs quit()?
+set search path for imports within python program:
+    import sys
+    sys.path.append('/home/student/imports'
+    print(sys.path)
+sys.path is a list of directories
+TODO: Can you use a remote location for imports? e.g. Github? Pastebin?
+
+########## Collections/Counter ##########
+Counter is a dictionary subclass that has many of the attributes of a dictionary with a number of useful enhancements
+    built to aid counting
+    has to be instantiated
+    normal dictionary rules/methods apply except:
+        fromkeys doesn't work
+        most_common(n) produces the n highest occurring keys in descending order
+        incrementing nonexistent keys defines and initializes the key
+
+x = Counter("somestring" >> dictionary of character counts
+y = Counter(list(x)) >> contains all keys found in x initialized to 1
+    easy to reset all counters to 1
+x.subtract(y) >> reduces all counts in x by 1 and retains all results
+x = x - y >> reduces all counts by 1 and removes items less than or equal to zero
+x.subtract(x) >> reduces all counts to zero and retains all results.
+x = Counter() >> creates an empty Counter or clears an existing one
+x.values() >> how many things were counted
+x.most_common()[::-1] >> ascending order
+    z = Counter()
+    for color in y:
+        z(color) += 1
+
+########## xxx ##########
